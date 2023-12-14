@@ -1,0 +1,13 @@
+.navStyle {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    /* border-bottom: .2rem double rgb(200, 0, 0); */
+  
+    width: 100%;
+    background-color: gray;
+    font-size: xx-large;
+  }; 
+

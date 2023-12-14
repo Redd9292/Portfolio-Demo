@@ -1,22 +1,11 @@
 import { Link } from "react-router-dom";
-
+import './Header.css'
 function Header() {
-
-  //an example of an inline style for the nav tag for an initial layout - later additions, or 
-
-  const navStyle = {
-    display: "flex",
-    justifyContent: "space-around",
-    borderBottom: ".2rem solid black",
-    padding: ".5rem",
-    width: "90%",
-    margin: "auto",
-  };
 
   return (
     <header>
-      <h1>My Portfolio Page</h1>
-      <nav style={navStyle}>
+        <nav className="navStyle">
+      <h1 className="text-6xl">Gilbert Espinoza</h1>
         <Link to="/">
           <div>HOME</div>
         </Link>
