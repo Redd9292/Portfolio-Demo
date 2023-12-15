@@ -1,15 +1,16 @@
 [
     {
       "name": "Simple Slot Machine",
-      "live": "https://app.herokuapp.com/whatever",
-      "git": "http://www.github.com/username/reponame",
-      "image": "http://www.imgur.com/pictureofproject.png"
+      "live": "https://redd9292.github.io/P1-Slot-Machine/",
+      "git": "https://github.com/Redd9292/P1-Slot-Machine",
+      "image": "https://i.imgur.com/WiGSniE.png"
+      
     },
     {
       "name": "Doggy Date",
-      "live": "https://app.netlify.app/whatever",
-      "git": "http://www.github.com/username/reponame",
-      "image": "http://www.imgur.com/pictureofproject.png"
+      "live": "https://doggydating-c428b5defcd3.herokuapp.com/",
+      "git": "https://github.com/Redd9292/DoggyDate-App?tab=readme-ov-file",
+      "image": "https://i.imgur.com/qLu2gzI.png"
     }
   ]
   

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 function Projects(props) {
   // create state to hold projects
   const [projects, setProjects] = useState(null);
@@ -25,8 +26,8 @@ function Projects(props) {
   const loaded = () => {
     return projects.map((project, idx) => (
       <div key={idx}>
-        <h1>{project.name}</h1>
-        <img src={project.image} />
+        <h1 className="py-20">{project.name}</h1>
+        <img src={project.image}/>
         <a href={project.git}>
           <button>Github</button>
         </a>
