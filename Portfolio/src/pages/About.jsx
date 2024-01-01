@@ -1,48 +1,70 @@
 import { useState, useEffect } from "react";
-
-import githubLogo from '../images/Github.png'
-import linkedIn from '../images/Linkedin.png'
+import { Link } from 'react-router-dom';
+import MeImage from '../images/Me.jpg';
+import './home.css';
 
 function About() {
-  // create state to hold about data
   const [about, setAbout] = useState(null);
+  const [rotationClass, setRotationClass] = useState('cd-rotate-1-out'); // Initial class
 
-  // create function to make api call
   const getAboutData = async () => {
-
-		// make api call and get response
     const response = await fetch("./about.json");
-
-		// turn response into javascript object
     const data = await response.json();
-
-		// set the about state to the data
     setAbout(data);
   };
 
-  // make an initial call for the data inside a useEffect, so it only happens once on component load
-  useEffect(() => { getAboutData() } , []);
+  useEffect(() => {
+    getAboutData();
 
-  // define a function that will return the JSX needed once we get the data
+    // Set interval to update the rotation class every 500 milliseconds
+    const intervalId = setInterval(() => {
+      // Toggle between rotation classes
+      setRotationClass((prevClass) =>
+        prevClass === 'cd-rotate-1-out' ? 'cd-rotate-2-out' : 'cd-rotate-1-out'
+      );
+    }, 5000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
   const loaded = () => (
-    
-    <div>
-      <h1 className="text-sm pb-24"> I’m Software Engineer passionate about leveraging my skills to solve complex problems and create innovative solutions. My experience includes working with a variety of programming languages and frameworks, and I’m always eager to learn more. I thrive in collaborative environment and am committed to continuous learning and growth in this dynamic field. Im exited to bring my dedication and technical skills to a forward-thinking company where I can contribute to challenging projects.
-</h1>
+    <div className="flex items-center justify-between">
+      <img src={MeImage} alt="Me" className="mt-4 order-1 mr-4 max-w-full round-lg" width="400" />
 
-      <h2>{about.name}</h2>
-      <h3>{about.email}</h3>
-      <a href="https://github.com/Redd9292" target="_blank" rel="noopener noreferrer">
-        <img src={githubLogo} alt="GitHub Logo" className="w-16 h-16" />
-      </a>
-      <a href="https://www.linkedin.com/in/gilbertoespinoza1/" target="_blank" rel="noopener noreferrer">
-        <img src={linkedIn} alt="Linkedin Logo" className="w-16 h-16" />
-      </a>
-      <p>{about.bio}</p>
+      <div className="text-center pr-8 order-2">
+        <h1>
+          Gilbert <span className="text-red-500">Espinoza</span>
+        </h1>
+        <h2 className='text-2xl'>
+          <span className="text-gray-500">Full-Stack</span>{' '} <span className={rotationClass}>Developer</span>
+        </h2>
+
+       {/* Thicker and bigger dotted line with margin */}
+       <div className="border-b border-line border-gray-500 my-8 w-3/4 border-t mx-auto"></div>
+
+
+
+        <p className="text-sm pb-4 leading-6">
+          I’m a Software Engineer passionate about leveraging my skills to solve complex problems and create innovative solutions. My experience includes working with a variety of programming languages and frameworks, and I’m always eager to learn more. I thrive in a collaborative environment and am committed to continuous learning and growth in this dynamic field. I'm excited to bring my dedication and technical skills to a forward-thinking company where I can contribute to challenging projects.
+        </p>
+
+ {/* Button to navigate to the About page */}
+ <Link to="/projects">
+        <button className="bg-red-500 text-white px-4 py-2 mt-4">Portfolio</button>
+      </Link>
+
+
+
+
+        {/* <h2>{about.name}</h2>
+        <h3>{about.email}</h3> */}
+
+  
+      </div>
     </div>
   );
 
-  // if data arrives return the result of loaded, if not, an h1 that says loading
   return about ? loaded() : <h1>Loading...</h1>;
 }
 

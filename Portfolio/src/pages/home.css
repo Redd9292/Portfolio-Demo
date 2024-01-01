@@ -1,0 +1,15 @@
+/* Add this to your Tailwind CSS or custom stylesheet */
+@keyframes cd-rotate-1-out {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+  
+  .cd-rotate-1-out {
+    display: inline-block;
+    animation: cd-rotate-1-out 0.5s ease; /* Adjust the duration and easing function */
+  }
+  
